@@ -1,1 +1,237 @@
+@font-face {
+    font-family: "Fira";
+    src: url(fonts/FiraCode-Regular.ttf) format('truetype');
+    font-weight: normal;
+}
 
+@font-face {
+    font-family: "Dina";
+    src: url(fonts/DinaRemasterCollection.ttf) format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "Dina";
+    src: url(fonts/DinaRemaster-Bold-02.ttf) format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Cascadia";
+    src: url(fonts/CascadiaCode_VTT.ttf) format('truetype');
+    font-weight: normal;
+}
+
+body {
+    height: 100hv;
+
+    background: -webkit-linear-gradient(
+        to bottom,
+        #343b58,
+        #565a6e
+    );
+    background: linear-gradient(
+        to bottom,
+        #1a1b26,
+        #1a1b26
+    );
+}
+
+.readme h1 {
+    width: 100%;
+    top: 30px;
+    font-size: 3em;
+    position: fixed;
+    font-family: "Cascadia", sans-serif;
+    font-weight: normal;
+    text-align: center;
+    background: linear-gradient(
+        to right,
+        #7aa2f7,
+        #2c5b91
+    );
+
+
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+
+}
+
+
+.readme {
+    left: 240px;
+}
+
+.readme p {
+    font-family: "Cascadia";
+    font-weight: normal;
+    font-size: 60px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+/* sidebar menu */
+
+.sidenav {
+
+    outline: #101014 solid 2px;
+    height: 100%;
+    width: 240px;
+    top: 20px;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    background-color: #16161e;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+.topbar {
+    outline: #101014 solid 2px;
+    height: 25px;
+    width: 240px;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: #16161e;
+    color: #787c99;
+    font-family: "Dina";
+    font-weight: bold;
+    font-size: 18px;
+    text-align: left;
+    text-indent: 1em;
+    text-shadow: 1px 1px 2px #101014;
+    box-shadow: 0px 4px 2px 1px rgba(0, 0, 0, 0.2);
+    overflow-x: hidden;
+    padding-top: 10px;
+}
+
+
+  /* The navigation menu links */
+  .subnavbtn  {
+    border: #1c1f2b;
+    width: 100%;
+    top: 5px;
+    padding: 8px 8px 8px 4px;
+    text-decoration: none;
+    font-family: "Cascadia" sans-serif;
+    font-size: 20px;
+    color: #787c99;
+    background-color: #16161e;
+    display: block;
+  }
+  
+  .subnavbtn:hover {
+    background-color: #0a0a0e;
+  }
+
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #13131a;
+  }
+
+.tab {
+    top: 0px;
+    left: 242px;
+    height: 35px;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+    outline: 2px solid #101014;
+    background-color: #16161e;
+    font-family: "Dina";
+
+}
+
+.tab {
+    display: flex;
+    flex-direction: row; /* Arrange tabs horizontally */
+}
+
+
+.tabbutton {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    width: 175px;
+
+
+    transition: 0.3s;
+    outline: #0a0a0e solid 2px;
+    text-decoration: none;
+    font-family: "Dina";
+    font-weight: normal;
+    font-size: 22px;
+    text-align: left;
+    color: #696c89;
+    position: relative;
+    display: flex; /* Make tab buttons and close buttons flex items */
+}
+
+.tablinks {
+    background-color: inherit;
+    cursor: pointer;
+    transition: 0.3s;
+
+    position: absolute;
+    left:0px;
+    width: 180px;
+    height: 35px;
+
+    padding-left: 4px;
+    text-decoration: none;
+    font-family: "Dina";
+    font-weight: normal;
+    font-size: 22px;
+    text-align: left;
+    color: #696c89;
+}
+
+.tabbutton button:hover {
+    background-color: #21212c;
+}
+
+.tabbutton:hover .closetab {
+    background-color: #21212c;
+}
+
+.closetab {
+    border-radius: 50%;
+    width: 5%;
+    height: 80%;
+
+    border:none;
+    outline:none;
+
+    cursor: pointer;
+    transition: 0.3s;
+    padding-right: 26px;
+    text-decoration: none;
+    font-family: "Dina";
+    font-weight: normal;
+    font-size: 22px;
+    text-align: left;
+    background-color: #16161e;
+    
+    position: absolute;
+    right: 5;
+    top: 50%;
+    transform: translateY(-50%);
+
+    opacity: 1;
+}
+
+.closetab img {
+    background-color: transparent !important;
+    filter: invert(63%) sepia(9%) saturate(533%) hue-rotate(201deg) brightness(91%) contrast(93%);
+    opacity: 1; /* Ensure full opacity */
+}
+
+.closetab:hover {
+    background-color: transparent !important;
+    opacity: .5; /* Ensure full opacity */
+}
