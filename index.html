@@ -1,1 +1,63 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio</title>
 
+        <link rel="stylesheet" href="style.css"  />
+        <script src="script.js"></script>
+
+    </head>
+    <body>
+        <div class="readme" id="readme.txt" style="display: none;">
+            <h1>lcuius "<span style="color: #9ece6a; -webkit-text-fill-color:#9ece6a; font-family: 'Cascadia', sans-serif;">craigcarkced</span>" carr</h1>
+            <p>hey guys its me craig cracked im going to be cracking everyhting</p>
+        </div>
+
+        <div class="other" id="other.txt" style="display: none;">
+            <h1>lcuius "<span style="color: #373b32; -webkit-text-fill-color:#9ece6a; font-family: 'Cascadia', sans-serif;">craigcarkced</span>" carr</h1>
+            <p>hey guys its me craig dDASDASDSADSDADAD im going to be cracking everyhting</p>
+        </div>
+
+        
+
+        <div class="sidenav">
+            <div class="topbar">WEBSITE</div>
+            <button class="subnavbtn" onclick="createTab('readme')">readme.txt<i class"fa fa-caret-down></i></button>
+            <button class="subnavbtn" onclick="toggleprojects()">> projects<i class"fa fa-caret-down></i></button>
+            <div class="projects" style="display: none;">
+                
+            </div>
+        </div>
+
+
+        <div class="tab" id="toptabbar">
+            <div class="tabbutton">
+                <button class="tablinks" onclick="openTab('readme.txt')">readme.txt</button>
+                <button class="closetab" type="close" onclick="closeTab(this)" title="readme.txt">
+                    <img src="photos\close.png" alt="Close" width="20" height="20">
+                </button>
+            </div>
+            <div class="tabbutton">
+                <button class="tablinks" onclick="openTab('other.txt')">other.txt</button>
+                <button class="closetab" type="close" onclick="closeTab(this)" title="other.txt">
+                    <img src="photos\close.png" alt="Close" width="20" height="20">
+                </button>
+            </div>
+            
+            <div class="tabbutton">
+                <button class="tablinks" onclick="opentab('project1.txt')">project1.txt</button>
+                <button class="closetab" type="close" onclick="closeTab(this)" title="project1.txt">
+                    <img src="photos\close.png" alt="Close" width="20" height="20">
+                </button>
+            </div>
+
+            <div class="tabbutton">
+                <button class="tablinks" onclick="opentab('project2.txt')">project2.txt</button>
+                <button class="closetab" type="close" onclick="closeTab(this)" title="project2.txt">
+                    <img src="photos\close.png" alt="Close" width="20" height="20">
+                </button>
+            </div>
+          </div>
+    </body>
+</html>
