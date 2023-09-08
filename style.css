@@ -317,6 +317,7 @@ body {
     overflow-y: auto; /* Add vertical scrollbar when content exceeds the maximum height */
 }
 
+
 #readmeTextbox:invalid {
     border:none;
     outline: none;
