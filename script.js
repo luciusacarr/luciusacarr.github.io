@@ -17,8 +17,6 @@ function hideOtherTabs(tab)
     
         readmeDiv.style.display = "none";
     }
-
-    console.log("hey ");
 }
 
 function closeTab(tab)
