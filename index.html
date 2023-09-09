@@ -9,16 +9,21 @@
 
     </head>
     <body>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
         <div class="readme" id="readme.txt" style="display: none;">
             <h1>DoomedPerson</h1>
             <p>hey guys its me craig cracked im going to be cracking everyhting</p>
             
             <div id="mi">
+                <div id="linecount-background"></div>
                 <div id="linecount">
                     <div id="line">1</div>
                 </div>
                 <div id="readmeTextboxContainer">
-                    <div contenteditable="true" spellcheck="false" id="readmeTextbox"></div>
+                    <div id="readmeTextboxContainerx">
+                        <div id="readmeTextbox" contenteditable="true" spellcheck="false"></div>
+                    </div>
                     <div class="highlight-overlay"></div>
                 </div>
             </div>
@@ -34,15 +39,19 @@
             <p>hey guys its me craig dDASDASDSADSDADAD im going to be cracking everyhting</p>
         </div>
 
-        
-
         <div class="sidenav">
             <div class="topbar">WEBSITE</div>
-            <button class="subnavbtn" onclick="createTab('readme')">readme.txt<i class"fa fa-caret-down></i></button>
-            <button class="subnavbtn" onclick="toggleprojects()">> projects<i class"fa fa-caret-down></i></button>
-            <div class="projects" style="display: none;">
-                
-            </div>
+            <button class="subnavbtn" onclick="createTab('readme')">readme.txt<i class="fa fa-caret"></i></button>
+            <button class="subnavbtn" id="projectsTab" onclick="toggleProjects()">projects <i class="fa fa-caret-right arrow-icon"></i></button>
+            <ul class="projects">
+                <div class="projects-container">
+
+                <li><a href="#">project 1</a></li>
+                <li><a href="#">project 2</a></li>
+                <li><a href="#">project 3</a></li>
+
+                </div>
+            </ul>
         </div>
 
 
