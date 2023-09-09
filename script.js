@@ -103,7 +103,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     editor.addEventListener('keydown', (e) => {
+        // Check if the Enter key (key code 13) is pressed
         if (e.key === 'Enter' || e.key === 'Backspace' || e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+            // Delay the highlight for a brief moment to allow the new line to be added
             setTimeout(() => {
                 highlightCurrentLine(e);
             }, 10);
@@ -131,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Add highlight to the current line
             currentLine.classList.add('line-highlight');
         } else {
-            
+            // Find the parent element (a line) of the startContainer
             const currentLine = startContainer.nodeType === Node.TEXT_NODE ? startContainer.parentElement : startContainer;
 
             // Remove previous highlight from all lines
@@ -140,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 line.classList.remove('line-highlight');
             });
 
-            
+            // Add highlight to the current line
             currentLine.classList.add('line-highlight');
         }
         // Deal with line numbers
@@ -159,4 +161,54 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     }
+
+    editor.addEventListener('scroll', updateLineNumbers);
+    editor.addEventListener('input', updateLineNumbers);
+    const readmeTextboxContainerX = document.getElementById('readmeTextboxContainerx');
+
+    function updateLineNumbers() {
+
+        // Check if the content exceeds the container's height
+        const isScrollable = editor.scrollHeight > editor.clientHeight;
+        
+        // Enable or disable scrolling based on the content
+        editor.style.overflowY = isScrollable ? 'auto' : 'hidden';
+        
+        // Update the scroll position immediately after adding line numbers
+        if (isScrollable) {
+            editor.style.top = '0px';
+            updateScroll();
+
+            editor.style.top = '16px';
+        } else {
+            editor.scrollTop = 0;
+            
+        }
+
+    }
+
+    function updateScroll() {
+    // Calculate the height difference
+    // Synchronize the scroll positions of the lineCount and editor
+        lineCount.scrollTop = editor.scrollTop;
+
+    }
+
+
+    
 });
+
+function toggleProjects() {
+    var projectsDropdown = document.querySelector('.projects');
+    var projectsButton = document.querySelector('.arrow-icon');
+
+    if (projectsDropdown.classList.contains('active')) {
+        projectsDropdown.style.maxHeight = '0';
+        projectsDropdown.classList.remove('active');
+        projectsButton.style.transform = 'rotate(0deg)';
+    } else {
+        projectsDropdown.style.maxHeight = projectsDropdown.scrollHeight + 'px';
+        projectsDropdown.classList.add('active');
+        projectsButton.style.transform = 'rotate(90deg)';
+    }
+}
