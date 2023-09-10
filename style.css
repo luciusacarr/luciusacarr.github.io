@@ -335,14 +335,14 @@ body {
 
 #mi {
     background-color: #1a1b26;
-    
-    position: relative;
-    display:flex;
+    display: flex; /* Use flexbox */
     align-items: stretch;
-    flex-direction: column;
-    height: 100%;
+    position: absolute;
+    overflow: auto;
     left: 242px;
-    top:37px;
+    top: 37px;
+    right: 0px;
+    bottom: 0px;
 }
 
 #linecount {
@@ -353,12 +353,11 @@ body {
     color: #535368;
     font-family: "Dina";
     font-size: 22px;
-    line-height: 22px; /* Adjust line height to match your editor */
-    overflow-y:hidden; /* Enable vertical scrollbar when content overflows */
-    border-right: 1px solid #101014; /* Add a border to separate line numbers */
-    height: calc(100% - 24px); /* Set a maximum height */
-    max-height: calc(100% - 24px);
+    line-height: 22px;
+    border-right: 1px solid #101014;
+    height: 100%; /* Set a maximum height */
 }
+
 
 #linecount-background {
     z-index: 4;
@@ -380,65 +379,11 @@ body {
 
 }
 
-#readmeTextboxContainerX {
-    
-    top: 28px;
-    left: 265px; /* Adjust left to match line numbers */
-    right: 0; /* Add space for the scrollbar */
-    bottom: 0;
-    position:fixed;
-    overflow: hidden; /* Always show vertical scrollbar */
-}
-
-#readmeTextboxContainer {
-    flex: 1;
-    border: none;
-    position: absolute;
-    top: -10px;
-    left: 230px; /* Adjust left to match line numbers */
-    right: 0;
-    bottom: 0;
-    overflow-y: hidden; /* Always show vertical scrollbar */
-    overflow-x: hidden;
-    max-height: calc(100% - 26px); /* Set a maximum height */
-    max-width: calc(100% - 266px); /* Set a maximum width */
-}
-/* Style the scrollbar track */
-#readmeTextboxContainer::-webkit-scrollbar {
-    width: 12px;
-}
-
-#readmeTextboxContainer::-webkit-scrollbar-track {
-    background: #232433;
-    border-radius: 0px;
-}
-
-/* Style the scrollbar thumb */
-#readmeTextboxContainer::-webkit-scrollbar-thumb {
-    background: #232433;
-    border-radius: 0px;
-}
-
-/* Style the scrollbar thumb on hover */
-#readmeTextboxContainer::-webkit-scrollbar-thumb:hover {
-    background: #2c2f41;
-}
-
-#readmeTextboxContainer::-webkit-scrollbar-corner {
-    background-color: transparent;
-}
-
 
 #readmeTextbox {
     z-index: 1;
     background-color: #1a1b26;
-    position: absolute;
-    left: 0; /* Set to 0 to avoid unnecessary horizontal scrollbar */
-    top: 0;
-    right:0;
-    bottom:0;
-    width: calc(100%-20px);
-    height: 100%;
+    width: calc(100% - 29px);
     resize: none;
     outline: none;
     border: none;
@@ -446,10 +391,35 @@ body {
     font-family: "Cascadia", monospace;
     font-size: 20px;
     line-height: 22px;
-    overflow:auto; /* Enable vertical scrollbar when content overflows */
-    min-height: 100%;
-    padding: 10px;
+    padding-left: 6px;
     white-space: nowrap;
+    flex-grow: 1; /* Make it grow to fill available space */
+}
+/* Additional styles as needed */
+
+
+#mi::-webkit-scrollbar {
+    width: 12px;
+}
+
+#mi::-webkit-scrollbar-track {
+    background: #222331;
+    border-radius: 0px;
+}
+
+/* Style the scrollbar thumb */
+#mi::-webkit-scrollbar-thumb {
+    background: #222331;
+    border-radius: 0px;
+}
+
+/* Style the scrollbar thumb on hover */
+#mi::-webkit-scrollbar-thumb:hover {
+    background: #2f3246;
+}
+
+#mi::-webkit-scrollbar-corner {
+    background-color: transparent;
 }
 
 #readmeTextbox::-webkit-scrollbar {
