@@ -17,6 +17,8 @@ function hideOtherTabs(tab)
     
         readmeDiv.style.display = "none";
     }
+
+    console.log("hey ");
 }
 
 function closeTab(tab)
@@ -108,6 +110,24 @@ document.addEventListener("DOMContentLoaded", function() {
                 highlightCurrentLine(e);
             }, 10);
         }
+
+        if (e.key == "Enter" && e.shiftKey) {
+            // Prevent the default behavior of a new line and add a new div
+            e.preventDefault();
+    
+
+            highlightCurrentLine();
+    
+            const newDiv = document.createElement('div');
+            
+            // Add a line break (you can customize the content here)
+    
+            editor.appendChild(newDiv);
+            newDiv.outerHTML = '<div class=""><br></div>';
+    
+    
+
+        }
     });
 
     function highlightCurrentLine(e) {
@@ -164,33 +184,18 @@ document.addEventListener("DOMContentLoaded", function() {
     editor.addEventListener('input', updateLineNumbers);
     const readmeTextboxContainerX = document.getElementById('readmeTextboxContainerx');
 
-    function updateLineNumbers() {
 
-        // Check if the content exceeds the container's height
-        const isScrollable = editor.scrollHeight > editor.clientHeight;
-        
-        // Enable or disable scrolling based on the content
-        editor.style.overflowY = isScrollable ? 'auto' : 'hidden';
-        
-        // Update the scroll position immediately after adding line numbers
-        if (isScrollable) {
-            editor.style.top = '0px';
-            updateScroll();
+    const readmeTextbox = document.getElementById("readmeTextbox");
+    const lc = document.getElementById("linecount");
 
-            editor.style.top = '16px';
-        } else {
-            editor.scrollTop = 0;
-            
-        }
+    readmeTextbox.addEventListener("input", function () {
+        // Update the height of readmeTextbox to match its scrollHeight
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
 
-    }
-
-    function updateScroll() {
-    // Calculate the height difference
-    // Synchronize the scroll positions of the lineCount and editor
-        lineCount.scrollTop = editor.scrollTop;
-
-    }
+        lc.style.height = "auto";
+        lc.style.height = this.scrollHeight + "px";
+    });
 
 
     
