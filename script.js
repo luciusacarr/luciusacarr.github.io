@@ -3,53 +3,63 @@ var openedTab = NaN;
 
 function hideOtherTabs(tab)
 {
-    if (tab != "readme.txt")
-    {
-        const readmeDiv = document.getElementById("readme.txt");
-    
-        readmeDiv.style.display = "none";
-    }
-    
 
-    if (tab != "other.txt")
+    const readmeDiv = document.getElementById("readme.txt");
+    const other = document.getElementById("other.txt");
+    const project1 = document.getElementById("maze_gen.proj");
+    const project2 = document.getElementById("solar_model.proj");
+
+    readmeDiv.style.display = "none";
+    other.style.display = "none";
+    project1.style.display = "none";
+    project2.style.display = "none";
+
+    if (tab != "none")
     {
-        const readmeDiv = document.getElementById("other.txt");
-    
-        readmeDiv.style.display = "none";
+        document.getElementById(tab).style.display = "block";
     }
 
-    console.log("hey ");
 }
 
-function closeTab(tab)
-{
+function closeTab(tab) {
+    const tabbar = document.getElementById("toptabbar");
+    const tabs = Array.from(tabbar.children);
+    const currentIndex = tabs.indexOf(tab.parentElement);
+
+    const tabTitle = tab.title;
 
     tab.parentElement.remove();
 
-
-    const numberNodes = document.getElementById("toptabbar").childNodes.length;
-
-
-    if (numberNodes <= 5) {
-        // open first child
-
-
-        hideOtherTabs("none")
-        openedTab = NaN;
-
+    if (currentIndex === -1) {
+        // Tab not found in the tabbar
+        return;
     }
-    else if (tab.title = openedTab)
-    {
-        // common case
-        const page = document.getElementById("toptabbar").firstElementChild;
 
-        openTab(page.firstElementChild.textContent);
+    
+    const numberNodes = tabs.length;
 
+    console.log(tabTitle + " " + openedTab);
+
+    if (numberNodes <= 1) {
         
 
+        // Open a new tab if the currently open tab is closed
+        hideOtherTabs("none");
+        openedTab = NaN;
+    } else if (tabTitle === openedTab) {
+        // If there's a tab before the closed one, open it
+        if (currentIndex > 0) {
+            const prevTab = tabs[currentIndex - 1];
+            openTab(prevTab.firstElementChild.textContent);
+        } else {
+            // If there's no tab before it, open the next one
+            const nextTab = tabs[currentIndex + 1];
+            openTab(nextTab.firstElementChild.textContent);
+        }
     }
-}
 
+    
+}
 function openTab(tab)
 {
     
@@ -73,12 +83,13 @@ function createTab(tabName) {
 
     const tabButton = document.createElement("button");
     tabButton.className = "tablinks";
-    tabButton.onclick = function() {openTab(tabName + ".txt");};
-    tabButton.textContent = tabName +".txt";
+    tabButton.onclick = function() {openTab(tabName);};
+    tabButton.textContent = tabName;
 
     const closeButton = document.createElement("button");
     closeButton.className = "closetab";
     closeButton.type = "close";
+    closeButton.title = tabName;
     closeButton.onclick = function() {closeTab(closeButton);};
     
     const img = document.createElement("img");
@@ -123,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Add a line break (you can customize the content here)
     
             editor.appendChild(newDiv);
-            newDiv.outerHTML = '<div class=""><br></div>';
+            newDiv.outerHTML = '<div class="" id=""><br></div>';
     
     
 
@@ -164,24 +175,24 @@ document.addEventListener("DOMContentLoaded", function() {
             currentLine.classList.add('line-highlight');
         }
         // Deal with line numbers
-        const numb = editor.childNodes.length;
+        const numb = editor.children.length;
+
+        console.log(numb);
 
         if ((numb !== lineCount.childElementCount) || (numb === 1 && e.key === 'Enter')) {
             if ((lineCount.childElementCount > 1 && e.key !== 'Enter') || (lineCount.childElementCount < numb)) {
                 lineCount.innerHTML = "";
             }
-
+            var setbacks = 0;
             for (let i = 1; i <= numb; i++) {
-                const line = document.createElement("div");
-                line.id = "line";
-                line.textContent = String(i);
-                lineCount.appendChild(line);
+                    const line = document.createElement("div");
+                    line.id = "line";
+                    line.textContent = String(i-setbacks);
+                    lineCount.appendChild(line);
             }
         }
     }
 
-    editor.addEventListener('scroll', updateLineNumbers);
-    editor.addEventListener('input', updateLineNumbers);
     const readmeTextboxContainerX = document.getElementById('readmeTextboxContainerx');
 
 
@@ -194,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function() {
         this.style.height = this.scrollHeight + "px";
 
         lc.style.height = "auto";
-        lc.style.height = this.scrollHeight + "px";
+        lc.style.height = this.style.height;
     });
 
 
