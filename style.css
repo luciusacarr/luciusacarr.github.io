@@ -250,7 +250,7 @@ body {
     outline: none;
     cursor: pointer;
 
-    width: 175px;
+    width: 200px;
 
 
     transition: 0.3s;
@@ -272,7 +272,7 @@ body {
 
     position: absolute;
     left:0px;
-    width: 180px;
+    width: 200px;
     height: 35px;
 
     padding-left: 4px;
@@ -311,7 +311,7 @@ body {
     background-color: #16161e;
     
     position: absolute;
-    right: 5;
+    right: 5px;
     top: 50%;
     transform: translateY(-50%);
 
@@ -359,14 +359,6 @@ body {
 }
 
 
-#linecount-background {
-    z-index: 4;
-    background-color: #1f212e;
-    width: 29px;
-    position: absolute;
-    height: 100%; /* Extend background to full height */
-    border-right: 1px solid #101014; /* Add a border to separate line numbers */
-}
 
 #line 
 {
@@ -459,4 +451,125 @@ body {
 
 .line-highlight {
     background-color: #1e202e;
+}
+
+
+
+
+.project1 {
+    position: absolute;
+    top: 40px;
+    left: 260px;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.project1 #header
+{
+    position: relative;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+    color: #f7768e;
+}
+
+.project1 p {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 24px;
+    left:20px;
+    position: relative;
+    color: 9aa5ce;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.37);
+    width: 40%;
+}
+
+
+.project1 video {
+    
+    left:30px;
+    position: relative;
+}
+
+.project1::-webkit-scrollbar {
+    width: 12px;
+}
+
+.project1::-webkit-scrollbar-track {
+    background: #222331;
+    border-radius: 0px;
+}
+
+/* Style the scrollbar thumb */
+.project1::-webkit-scrollbar-thumb {
+    background: #222331;
+    border-radius: 0px;
+}
+
+/* Style the scrollbar thumb on hover */
+.project1::-webkit-scrollbar-thumb:hover {
+    background: #2f3246;
+}
+
+.project1::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+
+.project2 {
+    position: absolute;
+    top: 40px;
+    left: 260px;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.project2 #header
+{
+    position: relative;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+    color: #f7768e;
+}
+
+.project2 p {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 24px;
+    left:20px;
+    position: relative;
+    color: 9aa5ce;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.37);
+    width: 40%;
+}
+
+.project2 video {
+    
+    left:30px;
+    position: relative;
+}
+
+.project2::-webkit-scrollbar {
+    width: 12px;
+}
+
+.project2::-webkit-scrollbar-track {
+    background: #222331;
+    border-radius: 0px;
+}
+
+/* Style the scrollbar thumb */
+.project2::-webkit-scrollbar-thumb {
+    background: #222331;
+    border-radius: 0px;
+}
+
+/* Style the scrollbar thumb on hover */
+.project2::-webkit-scrollbar-thumb:hover {
+    background: #2f3246;
+}
+
+.project2::-webkit-scrollbar-corner {
+    background-color: transparent;
 }
