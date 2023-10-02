@@ -16,16 +16,144 @@
             <p>hey guys its me craig cracked im going to be cracking everyhting</p>
             
             <div id="mi">
-                <div id="linecount-background"></div>
                 <div id="linecount">
                     <div id="line">1</div>
+                    <div id="line">2</div>
+                    <div id="line">3</div>
+                    <div id="line">4</div>
+                    <div id="line">5</div>
+                    <div id="line">6</div>
+                    <div id="line">7</div>
+                    <div id="line">8</div>
+                    <div id="line">9</div>
+                    <div id="line">10</div>
+                    <div id="line">11</div>
+                    <div id="line">12</div>
+                    <div id="line">13</div>
+                    <div id="line">14</div>
+                    <div id="line">15</div>
+                    <div id="line">16</div>
+                    <div id="line">17</div>
                 </div>
-                <div id="readmeTextbox" contenteditable="true" spellcheck="false"></div>
+                <div id="readmeTextbox" contenteditable="true" spellcheck="false">
+                    <div class="" id="">Hey reader, my name is Lucius, although I commonly go by DoomedPerson.</div>
+                    <div class="" id="">I am 18 and currently a freshman in college working toward my degree in Computer Engineering.</div>
+                    <div class="" id=""><br></div>
+                    <div class="" id="">I have ample experience in C++, Python, Lua, and Java and I have made applications, apps, and games with that experience.</div>
+                    <div class="" id=""><br></div>
+                    <div class="">I love the abilites that programming provides for and in fact, I teach High School Computer Science through my local homeschool group.</div>
+                    <div class="">I am passionate about the utility of technology and I think its important to provide everybody with the opportunity to explore and learn this amazing field.</div>
+                    <div class=""><br></div>
+                    <div class="">Although I am getting a degree in Computer Engineering I have deep interests in many other sciences, specifically Chemistry and Physics and the broad range of scopes those envelop.</div>
+                    <div class="">I like to use programming to make simulations of things(see project 1 for an example), or automate a strenuous process.</div>
+                    <div class=""><br></div>
+                    <div class="">I wanna thank you for coming to my website and feel free to browse around the directory. I hope to populate it more and more over time but it's still a work in progress as of now.</div>
+                    <div class="">Thanks for coming! :)</div>
+                    <div class=""><br></div>
+                    <div class=""> ps. I highly recommend checking out solar_mode.proj! </div>
+                    <div class=""><br></div>
+                    <div class="">~ Lucius</div>
+                </div>
 
                 <div class="highlight-overlay"></div>
 
             </div>
 
+
+
+
+
+        </div>
+
+        <div class="project1" id="solar_model.proj" style="display: none;">
+            <div id="header">Solar System Tracker</div>
+
+            <p>This project was the culmination of about three weeks of work and 80 hours of development. It started out as a simple project to make a functioning model of the solar system, this included using the eccentricity of the orbits, the distances, and via both of those the speed at a given point in an orbit. By the end of the project, I turned it into a full fledged app! I'm still working on getting it app store ready though. The app currently tracks the time accurate positions of the 8 planets in our solar system and gives you information like when they rise or set, or even where they are exactly in the sky!</p>
+
+            <p>Initially, I started by using basic equations to calculate the speeds and distances of all the planets, with no respect to time.</p>
+            
+            <img id="img" style="padding-left: 40px;" 60px;" src="photos/pradius.png"></img>
+            <img id="img" style="padding-left: 40px;" 60px;" src="photos/pvelocity.png"></img>
+            
+
+            <p>I got the distances from almanacs and used a combination of cosine and sine to transpose the distance into 2-dimensional coordinates. The result was something like this: </p>
+
+            <video width="300px" height="400px" autoplay muted loop>
+                <source src="videos/initialsolarvideo.mp4" type="video/mp4" />
+            </video>
+            
+            <p>Then came the issues, I wanted to sync up the planets positions in this simulation with their positions at any given time. I started by calculating the anomalies of the planets at the J2000 Epoch, with that base I firstly tried using the mean velocities of the planets to estimate where they would be after a given time. This unfortunately did not scale well at all, and logically it wouldn't even work on short scale projects. My next thought was iteration to get more specific velocities, this unfortunately did not work either and took exponentially longer to calculate. I tried many, many methods. All to varying levels of success. I decided to take a step back and I read Astronomical Algorithms by Jean Meeus, it was an excellent text and gave me many more ideas, I continued studying on orbital simulation and decided my method for calculating the positions of the planets at a given time would be the JSOP87 model.</p>
+
+            <p>I had recently gone camping at this time and while peering into the night sky I wondered which 'stars' I saw in the sky corresponded with which planets. For this reason I wanted my next attempt to be made for mobile devices, the goal, was making a functioning and up to date model of the solar system that would allow me to select a planet and get information about where it is in the sky, when it would rise, when it would set, or any combination of data of this manner.</p>
+
+            <p>I don't make mobile apps often but decided to use Flutter and Dart to host my solar system. I started with calculating the current Julian Date and getting to work on displaying the solar system.</p>
+
+            <p>With the julian date I calculated the heliocentric cartesian coordinates of all the planets, I then put them on a plane and displayed them, I also added zooming and panning to make it easier to select and choose planets down the line.</p>
+
+            <video width="300px" height="400px" autoplay muted loop>
+                <source src="videos/solarsystemscrollpan.mp4" type="video/mp4" />
+            </video>
+
+            <p>I then converted the heliocentric coordinates to geocentric coordinates so I could calculate the right ascension and declination of each planet.</p>
+
+            <img id="img" style="padding-left: 40px; padding-bottom: 12px;" 60px;" src="photos/radiuseq.png"></img>
+            <img id="img" style="padding-left: 40px; padding-bottom: 12px;" 60px;" src="photos/rightascension.png"></img>
+            <img id="img" style="padding-left: 40px;" 60px;" src="photos/declination.png"></img>
+            <p>where,</p>
+            <img id="img" style="padding-left: 40px;" 60px;" src="photos/whattheymean.png"></img>
+
+            <p>Awesome! Now with the Latitude and Longitude of a user I can calculate when when a planet will rise or fall, but what I found most important was calculating the azimuth and altitude, I'll show the equations for those too,</p>
+
+            <img id="img" style="padding-left: 40px;" 60px;" src="photos/azimuth.png"></img>
+            <img id="img" style="padding-left: 40px;" 60px;" src="photos/altitude.png"></img>
+            <p>where,</p>
+            <img id="img" style="padding-left: 40px;" 60px;" src="photos/whattheymean2.png"></img>
+
+
+            <p>If you don't know azimuth is where a celestial object is in the sky relative to north of an observer, and altitude is the height of the celestial object in the sky.</p>
+
+            <p>I added a layer of text a tthe bottom of my simulation that would be used for information about the selected planet as shown below,</p>
+
+            <img id="img" width = "400px" height="400px" style="padding-left: 20px" src="photos/jupiterinfo.png"></img>
+
+            <p>All the pieces are in place! I added a compass and a sensor to the app that will allow me to check what direction my phone is pointing in horizontally and vertically. Then I added a guide mode to the app that would work kind of like a compass, guiding you to your selected planet.</p>
+        
+            <img id="img" width = "400px" height="320px" style="padding-left: 20px" src="photos/neptunetrack.png"></img>
+
+            <p>The arrow will always point in the direction of the planet and the bar on the right will shrink depending on how close you are to pointing in the correct vertical direction.</p>
+
+            <p>The next night I went out to test if: 1) my app worked 2) I was correct about which planet I was seeing at night.
+            Sure enough, both conditions one and two were satisfied! I now hold the ability to select any planet or the sun and see where it is in the sky and other cool facts that go with it!
+            </p>
+
+            <img id="img" width = "350px" height="500px" style="padding-left: 20px" src="photos/trackinginaction.png"></img>
+
+            <p>The project isn't finished, for instance, I would like to add the moon to my model, but overall it works amazingly well and I learned a lot while making it!</p>
+
+            <p>Thanks for reading. :)</p>
+
+            <div class=""><br></div>
+            <div class=""><br></div>
+            <div class=""><br></div>
+        
+        </div>
+
+        <div class="project2" id="maze_gen.proj" style="display: none;">
+            <div id="header">Maze Generator & Solver</div>
+
+            <p>This project was a simple goal of mine since I read about pathfinding algorithms in one of my AI textbooks, my goal was simple make an agent that goes from point a to point b and mess around with a few algorithms for doing so. I also wanted to practice with SFML, as it was one of my first projects in SFML there was a bit more clutter than I would like. Initially upon loading up Visual Studio I realized that if I wanted an agent to solve a maze I would, well, need a maze. So I got to reading and decided to implement a depth first algorithm for generating a maze, as seen below,</p>
+
+            <video width="300px" height="400px" autoplay muted loop>
+            <source src="videos/Maze_Gen.mp4" type="video/mp4" />
+            </video>
+
+            <p>Great! We have a pretty decent maze, now we can implement a solver. I've tried with quite a few heuristics, with varying degrees of success, below is my implementation of a manhatten distance heuristic,</p>
+
+            <video width="300px" height="400px" autoplay muted loop>
+            <source src="videos/Maze_Solve.mp4" type="video/mp4" />
+            </video>
+
+            <p>It certainly works! I learned a lot about SFML and a little about maze generation, although if I do it again I'll try a completely different method as I feel my implementation of the depth first algorithm created relatively predictable paths. Overall this was a fun project that challenged me to try something I had never done before.</p>
 
 
 
@@ -39,14 +167,13 @@
 
         <div class="sidenav">
             <div class="topbar">WEBSITE</div>
-            <button class="subnavbtn" onclick="createTab('readme')">readme.txt<i class="fa fa-caret"></i></button>
-            <button class="subnavbtn" id="projectsTab" onclick="toggleProjects()">projects <i class="fa fa-caret-right arrow-icon"></i></button>
+            <button class="subnavbtn" onclick="createTab('readme.txt')">/readme.txt<i class="fa fa-caret"></i></button>
+            <button class="subnavbtn" id="projectsTab" onclick="toggleProjects()">/projects/ <i class="fa fa-caret-right arrow-icon"></i></button>
             <ul class="projects">
                 <div class="projects-container">
 
-                <li><a href="#">project 1</a></li>
-                <li><a href="#">project 2</a></li>
-                <li><a href="#">project 3</a></li>
+                <li><button class="subnavbtn" onclick="createTab('solar_model.proj')">/solar_model.proj</button></li>
+                <li><button class="subnavbtn" onclick="createTab('maze_gen.proj')">/maze_gen.proj</button></li>
 
                 </div>
             </ul>
@@ -57,26 +184,6 @@
             <div class="tabbutton">
                 <button class="tablinks" onclick="openTab('readme.txt')">readme.txt</button>
                 <button class="closetab" type="close" onclick="closeTab(this)" title="readme.txt">
-                    <img src="photos\close.png" alt="Close" width="20" height="20">
-                </button>
-            </div>
-            <div class="tabbutton">
-                <button class="tablinks" onclick="openTab('other.txt')">other.txt</button>
-                <button class="closetab" type="close" onclick="closeTab(this)" title="other.txt">
-                    <img src="photos\close.png" alt="Close" width="20" height="20">
-                </button>
-            </div>
-            
-            <div class="tabbutton">
-                <button class="tablinks" onclick="opentab('project1.txt')">project1.txt</button>
-                <button class="closetab" type="close" onclick="closeTab(this)" title="project1.txt">
-                    <img src="photos\close.png" alt="Close" width="20" height="20">
-                </button>
-            </div>
-
-            <div class="tabbutton">
-                <button class="tablinks" onclick="opentab('project2.txt')">project2.txt</button>
-                <button class="closetab" type="close" onclick="closeTab(this)" title="project2.txt">
                     <img src="photos\close.png" alt="Close" width="20" height="20">
                 </button>
             </div>
