@@ -8,11 +8,15 @@ function hideOtherTabs(tab)
     const other = document.getElementById("other.txt");
     const project1 = document.getElementById("maze_gen.proj");
     const project2 = document.getElementById("solar_model.proj");
+    const research1 = document.getElementById("research.paper");
+    const journalentries = document.getElementById("journal.entries");
 
     readmeDiv.style.display = "none";
     other.style.display = "none";
     project1.style.display = "none";
     project2.style.display = "none";
+    research1.style.display = "none";
+    journalentries.style.display = "none";
 
     if (tab != "none")
     {
@@ -203,18 +207,83 @@ document.addEventListener("DOMContentLoaded", function() {
         // Update the height of readmeTextbox to match its scrollHeight
         this.style.height = "auto";
         this.style.height = this.scrollHeight + "px";
-
-        lc.style.height = "auto";
-        lc.style.height = this.style.height;
+    
+        var divs = this.getElementsByTagName('div');
+        let totalProcessedCharacters = 0;
+    
+        for (var i = 0; i < divs.length; i++) {
+            if (divs[i].innerText.trim() !== '') {
+                // Save the caret position before making changes
+                savedCaretPosition = saveCaretPosition();
+    
+                var words = divs[i].innerText.split(/(\s+)/);
+                var formattedWords = words.map(function(word) {
+                    if (['def', 'return', 'if'].includes(word.trim())) {
+                        return '<span style="color: #FF79C8;">' + word + '</span>';
+                    } else {
+                        return word;
+                    }
+                });
+    
+                // Update only the innerHTML of the current div
+                divs[i].innerHTML = formattedWords.join('');
+    
+                // Restore the caret position after making changes
+                restoreCaretPosition(savedCaretPosition);
+    
+                // Count the processed characters for the current line
+                if (i === range.startContainer.parentNode.lineNumber) {
+                    totalProcessedCharacters += range.startOffset;
+                } else {
+                    totalProcessedCharacters += divs[i].innerText.length;
+                }
+            }
+        }
     });
+      
 
 
     
 });
 
+const saveCaretPosition = () => {
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+        return {
+            container: range.startContainer,
+            offset: range.startOffset
+        };
+    }
+};
+
+const restoreCaretPosition = (position) => {
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.setStart(position.container, position.offset);
+    range.collapse(true);
+    selection.removeAllRanges();
+    selection.addRange(range);
+};
+
 function toggleProjects() {
     var projectsDropdown = document.querySelector('.projects');
     var projectsButton = document.querySelector('.arrow-icon');
+
+    if (projectsDropdown.classList.contains('active')) {
+        projectsDropdown.style.maxHeight = '0';
+        projectsDropdown.classList.remove('active');
+        projectsButton.style.transform = 'rotate(0deg)';
+    } else {
+        projectsDropdown.style.maxHeight = projectsDropdown.scrollHeight + 'px';
+        projectsDropdown.classList.add('active');
+        projectsButton.style.transform = 'rotate(90deg)';
+    }
+}
+
+function toggleEngl() {
+    var projectsDropdown = document.querySelector('.english');
+    var projectsButton = document.querySelector('.earrow-icon');
 
     if (projectsDropdown.classList.contains('active')) {
         projectsDropdown.style.maxHeight = '0';
