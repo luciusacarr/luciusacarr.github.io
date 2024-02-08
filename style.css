@@ -88,6 +88,32 @@ body {
     padding: 10px;
 }
 
+.research1 div {
+    font-family: "Cascadia";
+    font-weight: normal;
+    color: #f7768e;
+    font-size: 34px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    top: 42%;
+    left: 8%;
+    position: absolute;
+}
+
+.research1 p {
+    font-family: "Cascadia";
+    font-weight: normal;
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 8%;
+    position: absolute;
+}
+
 /* sidebar menu */
 
 .sidenav {
@@ -193,6 +219,47 @@ body {
     background-color: #0a0a0e;
 }
 
+.english {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.english.active {
+    max-height: 100px; /* Adjust this value to control the dropdown's maximum height */
+}
+
+.english li {
+    padding: 1px;
+    text-align: left;
+}
+
+.english a {
+
+    
+    text-align: left;
+    text-decoration: none;
+    text-shadow: #0a0a0e 1px 2px 1px;
+    font-family: "Cascadia", sans-serif;
+    font-size: 20px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+
+    color: #787c99;
+    background-color: #16161e;
+    display: block;
+
+    height: 24px;
+    width: 100%;
+}
+
+.english a:hover {
+    background-color: #0a0a0e;
+}
+
 /* Update the vertical alignment for the arrow icon */
 .arrow-icon {
     vertical-align: middle;
@@ -201,6 +268,17 @@ body {
 
 /* Add this CSS to rotate the arrow icon */
 .arrow-rotate {
+    transform: rotate(90deg);
+}
+
+/* Update the vertical alignment for the arrow icon */
+.earrow-icon {
+    vertical-align: middle;
+    transition: transform 0.3s ease-in-out; /* Add transition for the arrow rotation */
+}
+
+/* Add this CSS to rotate the arrow icon */
+.earrow-rotate {
     transform: rotate(90deg);
 }
 
@@ -220,6 +298,26 @@ body {
 
 /* Adjust the position of the vertical line */
 .projects-container {
+    position: relative;
+    padding-left: 20px; /* Adjust the padding to create space for the line */
+}
+
+/* Add this CSS to create the vertical line */
+.engl-container::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 6%;
+    bottom: 0;
+    width: 1px; /* Adjust the width of the line as needed */
+    height: 88%;
+
+    background-color: #787c99; /* Line color */
+}
+
+/* Adjust the position of the vertical line */
+.engl-container {
     position: relative;
     padding-left: 20px; /* Adjust the padding to create space for the line */
 }
