@@ -39,6 +39,19 @@ body {
     );
 }
 
+footer {
+    background-color: #16161d;
+    outline-color: #101014;
+    outline:rgba(21, 21, 21, 0.99);
+    outline-offset: 7px;
+    color: #525252;
+    text-align: center;
+    padding: 6px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
 .readme h1 {
     width: 100%;
     left:280px;
