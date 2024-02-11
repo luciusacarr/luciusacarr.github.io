@@ -684,3 +684,20 @@ footer {
 .project2::-webkit-scrollbar-corner {
     background-color: transparent;
 }
+
+
+.image-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px; /* Adjust as needed */
+    width: 100%;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd; /* Optional border */
+    border-radius: 8px; /* Optional border radius */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional box shadow */
+    margin-right: 10px; /* Adjust spacing between images */
+}
