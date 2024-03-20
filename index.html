@@ -1,320 +1,299 @@
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Portfolio</title>
+var openedTab = NaN;
 
-        <link rel="stylesheet" href="style.css"  />
-        <script src="script.js"></script>
 
-    </head>
-    <body>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+function hideOtherTabs(tab)
+{
 
-        <div class="readme" id="readme.txt">
-            <h1>DoomedPerson</h1>
-            <p>hey guys its me craig cracked im going to be cracking everyhting</p>
+    const readmeDiv = document.getElementById("readme.txt");
+    const other = document.getElementById("other.txt");
+    const project1 = document.getElementById("maze_gen.proj");
+    const project2 = document.getElementById("solar_model.proj");
+    const research1 = document.getElementById("research.paper");
+    const journalentries = document.getElementById("journal.entries");
+    const bibpage = document.getElementById("bib.page");
+
+    readmeDiv.style.display = "none";
+    other.style.display = "none";
+    project1.style.display = "none";
+    project2.style.display = "none";
+    research1.style.display = "none";
+    journalentries.style.display = "none";
+    bibpage.style.display = "none";
+
+    if (tab != "none")
+    {
+        document.getElementById(tab).style.display = "block";
+    }
+
+}
+
+function closeTab(tab) {
+    const tabbar = document.getElementById("toptabbar");
+    const tabs = Array.from(tabbar.children);
+    const currentIndex = tabs.indexOf(tab.parentElement);
+
+    const tabTitle = tab.title;
+
+    tab.parentElement.remove();
+
+    if (currentIndex === -1) {
+        // Tab not found in the tabbar
+        return;
+    }
+
+    
+    const numberNodes = tabs.length;
+
+    console.log(tabTitle + " " + openedTab);
+
+    if (numberNodes <= 1) {
+        
+
+        // Open a new tab if the currently open tab is closed
+        hideOtherTabs("none");
+        openedTab = NaN;
+    } else if (tabTitle === openedTab) {
+        // If there's a tab before the closed one, open it
+        if (currentIndex > 0) {
+            const prevTab = tabs[currentIndex - 1];
+            openTab(prevTab.firstElementChild.textContent);
+        } else {
+            // If there's no tab before it, open the next one
+            const nextTab = tabs[currentIndex + 1];
+            openTab(nextTab.firstElementChild.textContent);
+        }
+    }
+
+    
+}
+function openTab(tab)
+{
+    
+
+    const readmeDiv = document.getElementById(tab);
+    
+    readmeDiv.style.display = "block";
+    hideOtherTabs(tab);
+
+    openedTab = tab;
+}
+
+
+
+function createTab(tabName) {
+    const tab = document.getElementById("toptabbar");
+
+    const div = document.createElement("div");
+    
+    div.className = "tabbutton";
+
+    const tabButton = document.createElement("button");
+    tabButton.className = "tablinks";
+    tabButton.onclick = function() {openTab(tabName);};
+    tabButton.textContent = tabName;
+
+    const closeButton = document.createElement("button");
+    closeButton.className = "closetab";
+    closeButton.type = "close";
+    closeButton.title = tabName;
+    closeButton.onclick = function() {closeTab(closeButton);};
+    
+    const img = document.createElement("img");
+    img.src = "photos\\close.png";
+    img.alt = "Close";
+    img.width = 20;
+    img.height = 20;
+
+    tab.appendChild(div);
+    div.appendChild(tabButton);
+    div.appendChild(closeButton);
+    closeButton.appendChild(img);
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const editor = document.getElementById('readmeTextbox');
+    const lineCount = document.getElementById('linecount');
+
+    editor.addEventListener('click', () => {
+        highlightCurrentLine("click");
+    });
+
+    editor.addEventListener('keydown', (e) => {
+        // Check if the Enter key (key code 13) is pressed
+        if (e.key === 'Enter' || e.key === 'Backspace' || e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+            // Delay the highlight for a brief moment to allow the new line to be added
+            setTimeout(() => {
+                highlightCurrentLine(e);
+            }, 10);
+        }
+
+        if (e.key == "Enter" && e.shiftKey) {
+            // Prevent the default behavior of a new line and add a new div
+            e.preventDefault();
+    
+
+            highlightCurrentLine();
+    
+            const newDiv = document.createElement('div');
             
-            <div id="mi" class="pleasemovedownward">
-                <div id="linecount">
-                    <div id="line">1</div>
-                    <div id="line">2</div>
-                    <div id="line">3</div>
-                    <div id="line">4</div>
-                    <div id="line">5</div>
-                    <div id="line">6</div>
-                    <div id="line">7</div>
-                    <div id="line">8</div>
-                    <div id="line">9</div>
-                    <div id="line">10</div>
-                    <div id="line">11</div>
-                    <div id="line">12</div>
-                    <div id="line">13</div>
-                    <div id="line">14</div>
-                    <div id="line">15</div>
-                    <div id="line">16</div>
-                    <div id="line">17</div>
-                </div>
-                <div id="readmeTextbox" contenteditable="true" spellcheck="false">
-                    <div class="" id="">Hello reader, my name is Lucius, although some people know me as DoomedPerson(my roblox name from when I was 11).</div>
-                    <div class="" id="">I am 19 and currently a freshman in college working toward my degree in Computer Engineering.</div>
-                    <div class="" id=""><br></div>
-                    <div class="" id="">I have ample experience in C++, Python, Lua, and Java and I have made applications, apps, and games with that experience.</div>
-                    <div class="" id=""><br></div>
-                    <div class="">I love the abilites that programming provides for. In fact, I love it so much that I teach High School Computer Science through my local homeschool group.</div>
-                    <div class="">I am passionate about the utility of technology and I think its important to provide everybody with the opportunity to explore and learn this amazing field.</div>
-                    <div class=""><br></div>
-                    <div class="">Although I am getting a degree in Computer Engineering I have deep interests in many other sciences, specifically Chemistry and Physics and the broad range of scopes those envelop.</div>
-                    <div class="">I like to use programming to make simulations of things(see project 1 for an example), or automate a strenuous process.</div>
-                    <div class=""><br></div>
-                    <div class="">I wanna thank you for coming to my website and feel free to browse around the directory. I hope to populate it more and more over time but it's still a work in progress as of now.</div>
-                    <div class="">Thanks for coming! :)</div>
-                    <div class=""><br></div>
-                    <div class=""> ps. I highly recommend checking out solar_model.proj! </div>
-                    <div class=""><br></div>
-                    <div class="">~ Lucius</div>
-                </div>
+            // Add a line break (you can customize the content here)
+    
+            editor.appendChild(newDiv);
+            newDiv.outerHTML = '<div class="" id=""><br></div>';
+    
+    
 
-                <div class="highlight-overlay"></div>
+        }
+    });
 
-            </div>
+    function highlightCurrentLine(e) {
+        const selection = window.getSelection();
+        const range = selection.getRangeAt(0);
 
+        // Get the startContainer (where the selection or caret is)
+        const startContainer = range.startContainer;
 
-
-
-
-        </div>
-
-        <div class="project1" id="solar_model.proj" style="display: none;">
-            <div id="header">Solar System Tracker</div>
-
-            <p>This project was the culmination of about three weeks of work and 80 hours of development. It started out as a simple project to make a functioning model of the solar system, this included using the eccentricity of the orbits, the distances, and via both of those the speed at a given point in an orbit. By the end of the project, I turned it into a full fledged app! I'm still working on getting it app store ready though. The app currently tracks the time accurate positions of the 8 planets in our solar system and gives you information like when they rise or set, or even where they are exactly in the sky!</p>
-
-            <p>Initially, I started by using basic equations to calculate the speeds and distances of all the planets, with no respect to time.</p>
+        // Check if the startContainer is the editor itself
+        if (startContainer === editor) {
+            // If the caret is at the beginning of the editor, set currentLine to the first line
+            const currentLine = editor.querySelector('.line');
             
-            <img id="img" style="padding-left: 40px;" 60px;" src="photos/pradius.png"></img>
-            <img id="img" style="padding-left: 40px;" 60px;" src="photos/pvelocity.png"></img>
-            
+            // Remove previous highlight from all lines
+            const highlightedLines = document.querySelectorAll('.line-highlight');
+            highlightedLines.forEach((line) => {
+                line.classList.remove('line-highlight');
+            });
 
-            <p>I got the distances from almanacs and used a combination of cosine and sine to transpose the distance into 2-dimensional coordinates. The result was something like this: </p>
+            // Add highlight to the current line
+            currentLine.classList.add('line-highlight');
+        } else {
+            // Find the parent element (a line) of the startContainer
+            const currentLine = startContainer.nodeType === Node.TEXT_NODE ? startContainer.parentElement : startContainer;
 
-            <video width="300px" height="400px" autoplay muted loop>
-                <source src="videos/initialsolarvideo.mp4" type="video/mp4" />
-            </video>
-            
-            <p>Then came the issues, I wanted to sync up the planets positions in this simulation with their positions at any given time. I started by calculating the anomalies of the planets at the J2000 Epoch, with that base I firstly tried using the mean velocities of the planets to estimate where they would be after a given time. This unfortunately did not scale well at all, and logically it wouldn't even work on short scale projects. My next thought was iteration to get more specific velocities, this unfortunately did not work either and took exponentially longer to calculate. I tried many, many methods. All to varying levels of success. I decided to take a step back and I read Astronomical Algorithms by Jean Meeus, it was an excellent text and gave me many more ideas, I continued studying on orbital simulation and decided my method for calculating the positions of the planets at a given time would be the JSOP87 model.</p>
+            // Remove previous highlight from all lines
+            const highlightedLines = document.querySelectorAll('.line-highlight');
+            highlightedLines.forEach((line) => {
+                line.classList.remove('line-highlight');
+            });
 
-            <p>I had recently gone camping at this time and while peering into the night sky I wondered which 'stars' I saw in the sky corresponded with which planets. For this reason I wanted my next attempt to be made for mobile devices, the goal, was making a functioning and up to date model of the solar system that would allow me to select a planet and get information about where it is in the sky, when it would rise, when it would set, or any combination of data of this manner.</p>
+            // Add highlight to the current line
+            currentLine.classList.add('line-highlight');
+        }
+        // Deal with line numbers
+        const numb = editor.children.length;
 
-            <p>I don't make mobile apps often but decided to use Flutter and Dart to host my solar system. I started with calculating the current Julian Date and getting to work on displaying the solar system.</p>
+        console.log(numb);
 
-            <p>With the julian date I calculated the heliocentric cartesian coordinates of all the planets, I then put them on a plane and displayed them, I also added zooming and panning to make it easier to select and choose planets down the line.</p>
+        if ((numb !== lineCount.childElementCount) || (numb === 1 && e.key === 'Enter')) {
+            if ((lineCount.childElementCount > 1 && e.key !== 'Enter') || (lineCount.childElementCount < numb)) {
+                lineCount.innerHTML = "";
+            }
+            var setbacks = 0;
+            for (let i = 1; i <= numb; i++) {
+                    const line = document.createElement("div");
+                    line.id = "line";
+                    line.textContent = String(i-setbacks);
+                    lineCount.appendChild(line);
+            }
+        }
+    }
 
-            <video width="300px" height="400px" autoplay muted loop>
-                <source src="videos/solarsystemscrollpan.mp4" type="video/mp4" />
-            </video>
-
-            <p>I then converted the heliocentric coordinates to geocentric coordinates so I could calculate the right ascension and declination of each planet.</p>
-
-            <img id="img" style="padding-left: 40px; padding-bottom: 12px;" 60px;" src="photos/radiuseq.png"></img>
-            <img id="img" style="padding-left: 40px; padding-bottom: 12px;" 60px;" src="photos/rightascension.png"></img>
-            <img id="img" style="padding-left: 40px;" 60px;" src="photos/declination.png"></img>
-            <p>where,</p>
-            <img id="img" style="padding-left: 40px;" 60px;" src="photos/whattheymean.png"></img>
-
-            <p>Awesome! Now with the Latitude and Longitude of a user I can calculate when when a planet will rise or fall, but what I found most important was calculating the azimuth and altitude, I'll show the equations for those too,</p>
-
-            <img id="img" style="padding-left: 40px;" 60px;" src="photos/azimuth.png"></img>
-            <img id="img" style="padding-left: 40px;" 60px;" src="photos/altitude.png"></img>
-            <p>where,</p>
-            <img id="img" style="padding-left: 40px;" 60px;" src="photos/whattheymean2.png"></img>
-
-
-            <p>If you don't know azimuth is where a celestial object is in the sky relative to north of an observer, and altitude is the height of the celestial object in the sky.</p>
-
-            <p>I added a layer of text a tthe bottom of my simulation that would be used for information about the selected planet as shown below,</p>
-
-            <img id="img" width = "400px" height="400px" style="padding-left: 20px" src="photos/jupiterinfo.png"></img>
-
-            <p>All the pieces are in place! I added a compass and a sensor to the app that will allow me to check what direction my phone is pointing in horizontally and vertically. Then I added a guide mode to the app that would work kind of like a compass, guiding you to your selected planet.</p>
-        
-            <img id="img" width = "400px" height="320px" style="padding-left: 20px" src="photos/neptunetrack.png"></img>
-
-            <p>The arrow will always point in the direction of the planet and the bar on the right will shrink depending on how close you are to pointing in the correct vertical direction.</p>
-
-            <p>The next night I went out to test if: 1) my app worked 2) I was correct about which planet I was seeing at night.
-            Sure enough, both conditions one and two were satisfied! I now hold the ability to select any planet or the sun and see where it is in the sky and other cool facts that go with it!
-            </p>
-
-            <img id="img" width = "350px" height="500px" style="padding-left: 20px" src="photos/trackinginaction.png"></img>
-
-            <p>The project isn't finished, for instance, I would like to add the moon to my model, but overall it works amazingly well and I learned a lot while making it!</p>
-
-            <p>Thanks for reading. :)</p>
-
-            <div class=""><br></div>
-            <div class=""><br></div>
-            <div class=""><br></div>
-        
-        </div>
-
-        <div class="project2" id="maze_gen.proj" style="display: none;">
-            <div id="header">Maze Generator & Solver</div>
-
-            <p>This project was a simple goal of mine since I read about pathfinding algorithms in one of my AI textbooks, my goal was simple make an agent that goes from point a to point b and mess around with a few algorithms for doing so. I also wanted to practice with SFML, as it was one of my first projects in SFML there was a bit more clutter than I would like. Initially upon loading up Visual Studio I realized that if I wanted an agent to solve a maze I would, well, need a maze. So I got to reading and decided to implement a depth first algorithm for generating a maze, as seen below,</p>
-
-            <video width="300px" height="400px" autoplay muted loop>
-            <source src="videos/Maze_Gen.mp4" type="video/mp4" />
-            </video>
-
-            <p>Great! We have a pretty decent maze, now we can implement a solver. I've tried with quite a few heuristics, with varying degrees of success, below is my implementation of a manhatten distance heuristic,</p>
-
-            <video width="300px" height="400px" autoplay muted loop>
-            <source src="videos/Maze_Solve.mp4" type="video/mp4" />
-            </video>
-
-            <p>It certainly works! I learned a lot about SFML and a little about maze generation, although if I do it again I'll try a completely different method as I feel my implementation of the depth first algorithm created relatively predictable paths. Overall this was a fun project that challenged me to try something I had never done before.</p>
+    const readmeTextboxContainerX = document.getElementById('readmeTextboxContainerx');
 
 
+    const readmeTextbox = document.getElementById("readmeTextbox");
+    const lc = document.getElementById("linecount");
+
+    readmeTextbox.addEventListener("input", function () {
+        // Update the height of readmeTextbox to match its scrollHeight
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
+    
+        var divs = this.getElementsByTagName('div');
+        let totalProcessedCharacters = 0;
+    
+        for (var i = 0; i < divs.length; i++) {
+            if (divs[i].innerText.trim() !== '') {
+                // Save the caret position before making changes
+                savedCaretPosition = saveCaretPosition();
+    
+                var words = divs[i].innerText.split(/(\s+)/);
+                var formattedWords = words.map(function(word) {
+                    if (['def', 'return', 'if'].includes(word.trim())) {
+                        return '<span style="color: #FF79C8;">' + word + '</span>';
+                    } else {
+                        return word;
+                    }
+                });
+    
+                // Update only the innerHTML of the current div
+                divs[i].innerHTML = formattedWords.join('');
+    
+                // Restore the caret position after making changes
+                restoreCaretPosition(savedCaretPosition);
+    
+                // Count the processed characters for the current line
+                if (i === range.startContainer.parentNode.lineNumber) {
+                    totalProcessedCharacters += range.startOffset;
+                } else {
+                    totalProcessedCharacters += divs[i].innerText.length;
+                }
+            }
+        }
+    });
+      
 
 
-        </div>
+    
+});
 
-        <div class="research1" id="research.paper" style="display: none;">
-            <h1>Embedded PDF Example</h1>
+const saveCaretPosition = () => {
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+        return {
+            container: range.startContainer,
+            offset: range.startOffset
+        };
+    }
+};
 
-            <embed src="paper.pdf#toolbar=0" type="application/pdf" width="98.05%" height="600px" hidecontrols="true">
-        
+const restoreCaretPosition = (position) => {
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.setStart(position.container, position.offset);
+    range.collapse(true);
+    selection.removeAllRanges();
+    selection.addRange(range);
+};
 
-        </div>
+function toggleProjects() {
+    var projectsDropdown = document.querySelector('.projects');
+    var projectsButton = document.querySelector('.arrow-icon');
 
-        <div class="research1" id="journal.entries" style="display: none; position: relative;">
-            <p class="underconstp" style="position: absolute; top: 25px; left: 5px; word-wrap: break-word;">This is a small, but growing, collection of a few journal entries taken during the 2023-2024 academic year.</p>
+    if (projectsDropdown.classList.contains('active')) {
+        projectsDropdown.style.maxHeight = '0';
+        projectsDropdown.classList.remove('active');
+        projectsButton.style.transform = 'rotate(0deg)';
+    } else {
+        projectsDropdown.style.maxHeight = projectsDropdown.scrollHeight + 'px';
+        projectsDropdown.classList.add('active');
+        projectsButton.style.transform = 'rotate(90deg)';
+    }
+}
 
-            <div class="image-container" style="position: relative; max-width: 100%; overflow-x: auto; white-space: nowrap; height: 500px;">
-                <img src="photos/j1.jpg" alt="Journal Entry 1" style="max-height: 75%; margin-right: 5px; position: absolute; top: 25%; left: 0%;">
-                <img src="photos/j2.jpg" alt="Journal Entry 2" style="max-height: 75%; margin-right: 5px; position: absolute; top: 25%; left: 30%;">
-                <img src="photos/j4.jpg" alt="Journal Entry 3" style="max-height: 75%; margin-right: 5px; position: absolute; top: 25%; left: 60%;">
-            </div>
-        </div>
-        
-        
+function toggleEngl() {
+    var projectsDropdown = document.querySelector('.english');
+    var projectsButton = document.querySelector('.earrow-icon');
 
-        <div class="research1" id="bib.page" style="display: none;">
-            <header>
-                <h1>Bibliography</h1>
-            </header>
-        
-            <section id="references">
-                <h2>References</h2>
-                <ul>
-                    <li style="    -webkit-text-fill-color: #a1a1a1;
-                    -webkit-text-stroke: .2px #111111;">
-                        <span class="author">Steve Olson</span>,
-                        <span class="title">Eruption: The Untold Story of Mount St. Helens</span>,
-                        <!--<span class="publication">Publication Information</span>,-->
-                        <span class="year">2016</span>.
-                        <span class="descriptor">This book showcases many of the impacts of the 1980 eruption, going into aspects including economic, personal, and environmental impacts. It has a large focus on the history leading up to the mountain as well, which puts you directly in the lives of those affected most. While focused on human lives, this book primarily concerns itself with the logging industry and its members.</span>
-                    </li>
-
-                    <li style="    -webkit-text-fill-color: #a1a1a1;
-                    -webkit-text-stroke: .2px #111111;">
-                        <span class="author">Adriana Janovich</span>,
-                        <span class="title">Mount St. Helens: The aftermath and lessons learned</span>,
-                        <!--<span class="publication">Publication Information</span>,-->
-                        <span class="year">2020</span>.
-                        <span></span>
-                        <span class="descriptor">This article talks about the damages brought forward by the 1980 eruption. It brushes up on the impacts of ash and landslides, and where the landscape is at now, 40 years later. From a more cultural side, it mentions recent tourism and its effects on spirit lake.</span>
-                    </li>
-
-                    <li style="    -webkit-text-fill-color: #a1a1a1;
-                    -webkit-text-stroke: .2px #111111;">
-                        <span class="author">KOMO</span>,
-                        <span class="title">Up From The Ashes</span>,
-                        <!--<span class="publication">Publication Information</span>,-->
-                        <span class="year">1990</span>.
-                        <span class="descriptor">This short documentary has a lot of both pre-eruption and post-eruption footage, showcasing personal accounts and general community consensus from the time. It documents precautions taken by the state, the development of the landscape, and the eventual damages it led to. This is a rich cultural piece of local importance and temperament.</span>
-                    </li>
-
-                    <li style="    -webkit-text-fill-color: #a1a1a1;
-                    -webkit-text-stroke: .2px #111111;">
-                        <span class="author">United States Geological Survey</span>,
-                        <span class="title">Mount St. Helens: May 18, 1980</span>,
-                        <!--<span class="publication">Publication Information</span>,-->
-                        <span class="year">2010</span>.
-                        <span class="descriptor">This video talks about the eruption and goes into account of the personal effect in terms of the scientists involved. It provides visuals of the ash cloud during the eruption, and the destruction after the eruption.</span>
-                    </li>
-
-                    <li style="    -webkit-text-fill-color: #a1a1a1;
-                    -webkit-text-stroke: .2px #111111;">
-                        <span class="author">United States Geological Survey</span>,
-                        <span class="title">1980 Cataclysmic Eruption</span>,
-                        <!--<span class="publication">Publication Information</span>,-->
-                        <span class="year">2023</span>.
-                        <span class="descriptor">This documents the eruption of Mount St. Helens on May 18, 1980, with a focus on the geological aspect, mentioning magma intrusion, the formation of a cryptodome, seismic activities, the subsequent debris avalanche triggered by a magnitude-5+ earthquake, and the resulting hydrothermal blast. This provides a comprehensive account of the events leading up to the eruption. It also includes visuals like seismograms, aerial views of eruption clouds, and the devastation caused by the lateral blast.</span>
-                    </li>
-
-                    <li style="    -webkit-text-fill-color: #a1a1a1;
-                    -webkit-text-stroke: .2px #111111;">
-                        <span class="author">United States Army Corp of Engineers</span>,
-                        <span class="title">Historical Vignette 176 - Mount St. Helens Erupts and USACE Responds</span>,
-                        <!--<span class="publication">Publication Information</span>,-->
-                        <span class="year">2020</span>.
-                        <span class="descriptor">This article talks about the US Army Corps of Engineers response following the 1980 eruption, detailing the organization's attempt to disrupt flooding and their quick thinking in times of hardship. It showcases that even the long-lasting impacts of the mountain are not limited to its local area, but extend across state lines.</span>
-                    </li>
-
-
-
-                    <li style="    -webkit-text-fill-color: #a1a1a1;
-                    -webkit-text-stroke: .2px #111111;">
-                        <span class="author">Lucius Carr</span>,
-                        <span class="title">Photos of Mt St. Helens from Summit & Johnstons Ridge</span>,
-                        <!--<span class="publication">Publication Information</span>,-->
-                        <span class="year">2023</span>.
-                        <span class="descriptor">This is something more personal to me, showcasing what sparked my interest in this topic. It also provides more up-to-date visuals of the mountainside and its progressing healing. Some of the pictures are taken from the highest point on the mountain next to the ridge of the dome and others are taken at the Johnston Ridge Observatory.</span>
-                        <span class="image-container">
-                            <img src="photos/mountain1.png" alt="Mt St Helens Photo 1" style="max-width: 200px;">
-                            <img src="photos/mountain2.jpg" alt="Mt St Helens Photo 2" style="max-width: 200px;">
-                            <img src="photos/mountain3.jpg" alt="Mt St Helens Photo 3" style="max-width: 200px;">
-                        </span>
-                        <span class="image-container">
-                            <img src="photos/mountain5.jpg" alt="Mt St Helens Photo 4" style="max-width: 200px;">
-                            <img src="photos/mountain4.jpg" alt="Mt St Helens Photo 5" style="max-width: 200px;">
-                        </span>
-                    </li>
-                    <!-- Add more references as needed -->
-                </ul>
-            </section>
-            <!--<div class="image-container">
-                <img src="image1.jpg" alt="Journal Entry 1">
-                <img src="image2.jpg" alt="Journal Entry 1">
-                <img src="image3.jpg" alt="Journal Entry 1">
-            </div>-->
-
-        </div>
-
-
-        <div class="other" id="other.txt" style="display: none;">
-            <h1>lcuius "<span style="color: #373b32; -webkit-text-fill-color:#9ece6a; font-family: 'Cascadia', sans-serif;">craigcarkced</span>" carr</h1>
-            <p>hey guys its me craig dDASDASDSADSDADAD im going to be cracking everyhting</p>
-        </div>
-
-        <div class="sidenav">
-            <div class="topbar">WEBSITE</div>
-            <button class="subnavbtn" onclick="createTab('readme.txt')">/readme.txt<i class="fa fa-caret"></i></button>
-            <button class="subnavbtn" id="projectsTab" onclick="toggleProjects()">/projects/ <i class="fa fa-caret-right arrow-icon"></i></button>
-            <ul class="projects">
-                <div class="projects-container">
-
-                <li><button class="subnavbtn" onclick="createTab('solar_model.proj')">/solar_model.proj</button></li>
-                <li><button class="subnavbtn" onclick="createTab('maze_gen.proj')">/maze_gen.proj</button></li>
-
-                </div>
-            </ul>
-            <button class="subnavbtn" id="englTab" onclick="toggleEngl()">/english/ <i class="fa fa-caret-right earrow-icon"></i></button>
-            <ul class="english">
-                <div class="engl-container">
-
-                <li><button class="subnavbtn" onclick="createTab('research.paper')">/research.paper</button></li>
-                <li><button class="subnavbtn" onclick="createTab('journal.entries')">/journal.entries</button></li>
-                <li><button class="subnavbtn" onclick="createTab('bib.page')">/bib.page</button></li>
-
-                </div>
-            </ul>
-        </div>
-
-
-        <div class="tab" id="toptabbar">
-            <div class="tabbutton">
-                <button class="tablinks" onclick="openTab('readme.txt')">readme.txt</button>
-                <button class="closetab" type="close" onclick="closeTab(this)" title="readme.txt">
-                    <img src="photos\close.png" alt="Close" width="20" height="20">
-                </button>
-            </div>
-          </div>
-
-          <footer style="z-index: 10;">
-            2024 github.com/doomedperson
-        </footer>
-    </body>
-</html>
+    if (projectsDropdown.classList.contains('active')) {
+        projectsDropdown.style.maxHeight = '0';
+        projectsDropdown.classList.remove('active');
+        projectsButton.style.transform = 'rotate(0deg)';
+    } else {
+        projectsDropdown.style.maxHeight = projectsDropdown.scrollHeight + 'px';
+        projectsDropdown.classList.add('active');
+        projectsButton.style.transform = 'rotate(90deg)';
+    }
+}
