@@ -10,6 +10,7 @@ function hideOtherTabs(tab)
     const project2 = document.getElementById("solar_model.proj");
     const research1 = document.getElementById("research.paper");
     const journalentries = document.getElementById("journal.entries");
+    const bibpage = document.getElementById("bib.page");
 
     readmeDiv.style.display = "none";
     other.style.display = "none";
@@ -17,6 +18,7 @@ function hideOtherTabs(tab)
     project2.style.display = "none";
     research1.style.display = "none";
     journalentries.style.display = "none";
+    bibpage.style.display = "none";
 
     if (tab != "none")
     {
