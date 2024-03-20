@@ -743,7 +743,8 @@ footer {
     list-style: none;
     padding: 0;
     overflow-y: auto;
-    max-height: 300px;
+    height: 60%;
+    max-height: 60%;
 }
 
 .research1 li {
