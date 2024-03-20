@@ -78,6 +78,11 @@ footer {
     left: 240px;
 }
 
+.pleasemovedownward {
+    left: 240px;
+}
+
+
 .readme p {
     font-family: "Cascadia";
     font-weight: normal;
@@ -336,7 +341,7 @@ footer {
 }
 
 .tab {
-    z-index: 2;
+    z-index: 5;
     top: 0px;
     left: 242px;
     height: 35px;
@@ -459,6 +464,7 @@ footer {
 #linecount {
     background-color: #1f212e;
     width: 29px;
+    top:0px;
     z-index: 4;
     white-space: nowrap;
     color: #535368;
@@ -466,18 +472,21 @@ footer {
     font-size: 22px;
     line-height: 22px;
     border-right: 1px solid #101014;
-    height: 100%; /* Set a maximum height */
+    height: 12000%; /* Set a maximum height */
+    position: absolute;
 }
 
 
 
 #line 
 {
+
     z-index: 24;
     font-family: "Dina";
     color:#535368;
     text-align: center;
     font-size: 22px;
+    top:22px;
     height: 22px;
 
 }
@@ -486,7 +495,10 @@ footer {
 #readmeTextbox {
     z-index: 1;
     background-color: #1a1b26;
+    top:0px;
+    left:28px;
     width: calc(100% - 29px);
+    height: 80%;
     resize: none;
     outline: none;
     border: none;
@@ -497,6 +509,7 @@ footer {
     padding-left: 6px;
     white-space: nowrap;
     flex-grow: 1; /* Make it grow to fill available space */
+    position: absolute;
 }
 /* Additional styles as needed */
 
@@ -700,4 +713,78 @@ footer {
     border-radius: 8px; /* Optional border radius */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional box shadow */
     margin-right: 10px; /* Adjust spacing between images */
+}
+
+
+.research1 body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    margin-left: 240px;
+}
+
+.research1 header {
+    background-color: #33333300;
+    -webkit-text-fill-color: #919191;
+    -webkit-text-stroke: .2px #111111;
+    padding: 20px;
+    text-align: center;
+}
+
+.research1 section {
+    margin: 40px;
+}
+
+.research1 h2 {
+    color: #333;
+}
+
+.research1 ul {
+    list-style: none;
+    padding: 0;
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.research1 li {
+    margin-bottom: 10px;
+}
+
+.author {
+    font-weight: bold;
+    -webkit-text-fill-color: #ddd;
+    -webkit-text-stroke: .2px #111111;
+}
+
+.title {
+    font-style: italic;
+    -webkit-text-fill-color: #ddd;
+    -webkit-text-stroke: .2px #111111;
+}
+
+.image-container img {
+    margin: 5px; /* Adjust this value as needed to control the spacing between images */
+}
+
+.publication {
+    font-weight: bold;
+    -webkit-text-fill-color: #ddd;
+    -webkit-text-stroke: .2px #111111;
+}
+
+.year {
+    font-style: bold;
+    -webkit-text-fill-color: #ddd;
+    -webkit-text-stroke: .2px #111111;
+}
+
+.research1 {
+    margin-left: 260px;
+}
+
+.descriptor {
+    margin-top: 5px;
+    margin-bottom: 10px; /* Added margin to prevent overlap */
+    font-size: 14px;
+    color: #555;
 }
