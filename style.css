@@ -699,6 +699,84 @@ footer {
 }
 
 
+.project3 {
+    position: absolute;
+    top: 40px;
+    left: 260px;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.project3 #header
+{
+    position: relative;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+    text-align:center;
+    color: #f7768e;
+}
+
+.project3 #header2
+{
+    position: relative;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 26px;
+    text-align:center;
+    color: #972121;
+}
+
+.project3 #header3
+{
+    position: relative;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 26px;
+    text-align:center;
+    color: #e4e4e4;
+}
+
+.project3 p {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 19px;
+    position: relative;
+    text-align: center;
+    color: rgb(232, 232, 232);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.37);
+
+}
+
+.project3 video {
+    
+    left:30px;
+    position: relative;
+}
+
+.project3::-webkit-scrollbar {
+    width: 12px;
+}
+
+.project3::-webkit-scrollbar-track {
+    background: #222331;
+    border-radius: 0px;
+}
+
+/* Style the scrollbar thumb */
+.project3::-webkit-scrollbar-thumb {
+    background: #222331;
+    border-radius: 0px;
+}
+
+/* Style the scrollbar thumb on hover */
+.project3::-webkit-scrollbar-thumb:hover {
+    background: #2f3246;
+}
+
+.project3::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+
 .image-container {
     display: flex;
     justify-content: space-between;
