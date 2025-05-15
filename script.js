@@ -27,6 +27,12 @@ function hideOtherTabs(tab)
 
 }
 
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidenav');
+    sidebar.classList.toggle('hidden');
+}
+
+
 function closeTab(tab) {
     const tabbar = document.getElementById("toptabbar");
     const tabs = Array.from(tabbar.children);
