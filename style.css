@@ -146,7 +146,42 @@ footer {
     background-color: #16161e;
     overflow-x: hidden;
     padding-top: 20px;
+    transition: transform 0.3s ease;
+    transform: translateX(0);
+    z-index: 1000;
   }
+
+
+/* Hidden state for mobile */
+.sidenav.hidden {
+    transform: translateX(-100%);
+}
+
+/* Hamburger button */
+#menu-toggle {
+    position: fixed;
+    top: 20px;
+    left: 80px;
+    width:200px;
+    height:200px;
+    font-size: 24px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    z-index: 1100;
+    cursor: pointer;
+}
+
+/* Optional: hide toggle button on large screens */
+@media (min-width: 768px) {
+    #menu-toggle {
+        display: none;
+    }
+
+    .sidenav {
+        transform: translateX(0) !important;
+    }
+}
 
 .topbar {
     outline: #101014 solid 2px;
@@ -352,6 +387,24 @@ footer {
     background-color: #16161e;
     font-family: "Dina";
 
+}
+
+.tabphone {
+    z-index: 5;
+    top: 0px;
+    left: 0px;
+    height: 35px;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+    outline: 2px solid #101014;
+    background-color: #16161e;
+    font-family: "Dina";
+
+}
+.tabphone {
+    display: flex;
+    flex-direction: row; /* Arrange tabs horizontally */
 }
 
 .tab {
@@ -773,6 +826,87 @@ footer {
 }
 
 .project3::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+
+
+
+.project3phone {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    right: 0px;
+    bottom: 0;
+    overflow-y: auto;
+}
+
+.project3phone #header
+{
+    position: relative;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+    text-align:center;
+    color: #f7768e;
+}
+
+.project3phone #header2
+{
+    position: relative;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 26px;
+    text-align:center;
+    color: #972121;
+}
+
+.project3phone #header3
+{
+    position: relative;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 26px;
+    text-align:center;
+    color: #e4e4e4;
+}
+
+.project3phone p {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 19px;
+    position: relative;
+    text-align: center;
+    color: rgb(232, 232, 232);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.37);
+
+}
+
+.project3phone video {
+    
+    left:30px;
+    position: relative;
+}
+
+.project3phone::-webkit-scrollbar {
+
+    width: 12px;
+}
+
+.project3phone::-webkit-scrollbar-track {
+    background: #222331;
+    border-radius: 0px;
+}
+
+/* Style the scrollbar thumb */
+.project3phone::-webkit-scrollbar-thumb {
+    background: #222331;
+    border-radius: 0px;
+}
+
+/* Style the scrollbar thumb on hover */
+.project3phone::-webkit-scrollbar-thumb:hover {
+    background: #2f3246;
+}
+
+.project3phone::-webkit-scrollbar-corner {
     background-color: transparent;
 }
 
