@@ -64,7 +64,7 @@
 
         </div>
 
-        <div class="project3" id="plasma.proj">
+        <div class="project3phone" id="plasma.proj">
             <div id="header">Spectrographic Analysis of DC Plasma: Mapping Voltage, Pressure, and Temperature Relationships for Optimized Applications</div>
             <div id="header2">By: Lucius Carr, Christopher Boggs, Mwanza Lungu, John Edwards, Caleb Kasero</div>
 
@@ -89,6 +89,11 @@
               </p>
 
           <div id="header3">Methods</div>
+
+
+          <p>Our procedure was generally straight-forward. We used an OceanView spectrometer to measure the spectral intensity between 650-1050nm wavelengths, while tweaking factors such as voltage and pressure. We tweaked these factors independently. We measured at the Anode and Cathode, and took some measurements at different striations. To measure temperature, we utilized the NIST database to find energy, transition probability, and degeneracy for different wavelengths of Argon present in our sample. This data was used to perform our Boltzmann Plot calculations.</p>
+
+          <div id="header3">Photos and Graphs</div>
 
             <img id="img" style="padding-left: 40px;" 60px;" src="photos/pradius.png"></img>
             <img id="img" style="padding-left: 40px;" 60px;" src="photos/pvelocity.png"></img>
@@ -198,41 +203,26 @@
             <p>hey guys its me craig dDASDASDSADSDADAD im going to be cracking everyhting</p>
         </div>
 
-        <div class="sidenav">
-            <div class="topbar">WEBSITE</div>
-            <button class="subnavbtn" onclick="createTab('readme.txt')">/readme.txt<i class="fa fa-caret"></i></button>
-            <button class="subnavbtn" id="projectsTab" onclick="toggleProjects()">/projects/ <i class="fa fa-caret-right arrow-icon"></i></button>
-            <ul class="projects">
-                <div class="projects-container">
+<!-- Hamburger menu button -->
+<button id="menu-toggle" onclick="toggleSidebar()">☰xxsds</button>
 
-                <li><button class="subnavbtn" onclick="createTab('solar_model.proj')">/solar_model.proj</button></li>
-                <li><button class="subnavbtn" onclick="createTab('maze_gen.proj')">/maze_gen.proj</button></li>
-
-                </div>
-            </ul>
-            <button class="subnavbtn" id="englTab" onclick="toggleEngl()">/english/ <i class="fa fa-caret-right earrow-icon"></i></button>
-            <ul class="english">
-                <div class="engl-container">
-
-                <li><button class="subnavbtn" onclick="createTab('research.paper')">/research.paper</button></li>
-                <li><button class="subnavbtn" onclick="createTab('journal.entries')">/journal.entries</button></li>
-
-                </div>
-            </ul>
-        </div>
+        <script>createTab('readme.txt')
+        createTab('solar_model.proj')</script>
 
 
-        <div class="tab" id="toptabbar">
+        <div class="tabphone" id="toptabbar">
             <div class="tabbutton">
-                <button class="tablinks" onclick="openTab('readme.txt')">readme.txt</button>
-                <button class="closetab" type="close" onclick="closeTab(this)" title="readme.txt">
+
+                <button class="tablinks" onclick="openTab('plasma.proj')">plasma.proj</button>
+                <button class="closetab" type="close" onclick="closeTab(this)" title="plasma.proj">
                     <img src="photos\close.png" alt="Close" width="20" height="20">
                 </button>
-                <button class="tablinks" onclick="openTab('solar_model.proj')">solar_model.proj</button>
-                <button class="closetab" type="close" onclick="closeTab(this)" title="solar_model.proj">
-                    <img src="photos\close.png" alt="Close" width="20" height="20">
-                </button>
+
             </div>
           </div>
+
+          <script>createTab('readme.txt')
+            createTab('solar_model.proj')</script>
+    
     </body>
 </html>
