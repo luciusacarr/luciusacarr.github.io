@@ -869,6 +869,15 @@ footer {
     color: #e4e4e4;
 }
 
+.project3phone #moreinfo
+{
+    position: relative;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 26px;
+    text-align:center;
+    color: #686868;
+}
+
 .project3phone p {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 19px;
