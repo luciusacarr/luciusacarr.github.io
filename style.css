@@ -837,6 +837,7 @@ footer {
     top: 40px;
     left: 10px;
     right: 0px;
+    width: 98%;
     bottom: 0;
     overflow-y: auto;
 }
@@ -887,7 +888,7 @@ footer {
 
 .project3phone::-webkit-scrollbar {
 
-    width: 12px;
+    display: none;
 }
 
 .project3phone::-webkit-scrollbar-track {
