@@ -116,6 +116,8 @@
             <video width="300px" height="400px" autoplay muted loop>
                 <source src="videos/initialsolarvideo.mp4" type="video/mp4" />
             </video>
+
+            
             
             <p>Then came the issues, I wanted to sync up the planets positions in this simulation with their positions at any given time. I started by calculating the anomalies of the planets at the J2000 Epoch, with that base I firstly tried using the mean velocities of the planets to estimate where they would be after a given time. This unfortunately did not scale well at all, and logically it wouldn't even work on short scale projects. My next thought was iteration to get more specific velocities, this unfortunately did not work either and took exponentially longer to calculate. I tried many, many methods. All to varying levels of success. I decided to take a step back and I read Astronomical Algorithms by Jean Meeus, it was an excellent text and gave me many more ideas, I continued studying on orbital simulation and decided my method for calculating the positions of the planets at a given time would be the JSOP87 model.</p>
 
